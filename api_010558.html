@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>fetch request</title>
+        </head>
+        <body>
+            <h1>fetch request using javascript</h1>
+<ul><div id="list"></div></ul>
+<script>
+    
+    // Fetch user data from a public API
+    fetch( 'https://api.thecatapi.com/v1/images/search?limit=0') 
+     .then (response =>
+     { if(response.ok)
+        console.log("success") 
+       else
+       console.log("failed") 
+       return  response.json()
+     })
+
+     .then(data=>{
+        if (data && data.length>0){
+            const img=document.createElement('img');
+            console.log(img.scr=data[0].url);
+            img.alt="rangim cat";
+            img.style.width='400px';
+            document.getElementById('list').appendChild(img);
+        }
+     })
+       .catch(err=>console.log(err));
+    </script>
+    </body>
+    </html>
